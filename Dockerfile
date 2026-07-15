@@ -1,10 +1,10 @@
 FROM lscr.io/linuxserver/chromium:latest
 
-# הגדרת פורט שיתאים ל-Railway
+# הגדרות הפורט והפריימים
 ENV CUSTOM_PORT=8080
+ENV SELKIES_FRAMERATE=30
 
-# הגדרת זרימת וידאו חלקה ב-60 פריימים לשנייה
-ENV SELKIES_FRAMERATE=60
+# אופטימיזציה קיצונית לחיסכון במשאבים ומניעת קריסות בכרטיסיות מרובות
+ENV CHROMIUM_FLAGS="--disable-dev-shm-usage --no-sandbox --disable-gpu --disable-software-rasterizer --num-raster-threads=1 --disable-background-networking --disable-extensions"
 
-# פתיחת הפורט החוצה
 EXPOSE 8080
