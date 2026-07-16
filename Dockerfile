@@ -1,10 +1,13 @@
 FROM lscr.io/linuxserver/chromium:latest
 
-# הגדרות הפורט והפריימים
+# הגדרות פורט וביצועים
 ENV CUSTOM_PORT=8080
-ENV SELKIES_FRAMERATE=30
+ENV TITLE="Cloud Browser"
 
-# אופטימיזציה קיצונית לחיסכון במשאבים ומניעת קריסות בכרטיסיות מרובות
-ENV CHROMIUM_FLAGS="--disable-dev-shm-usage --no-sandbox --disable-gpu --disable-software-rasterizer --num-raster-threads=1 --disable-background-networking --disable-extensions"
+# הגדרת וידאו חלקה ומהירה ב-60 פריימים לשנייה
+ENV SELKIES_FRAMERATE=60
+
+# הגדרות Chromium ממוקדות וידאו ומניעת מסך שחור (בלי הגבלות גרפיות חונקות)
+ENV CHROMIUM_FLAGS="--disable-dev-shm-usage --no-sandbox --use-gl=swiftshader --enable-features=WebCodecs,WebRTC-H264WithOpenH264AcquireEncoder"
 
 EXPOSE 8080
