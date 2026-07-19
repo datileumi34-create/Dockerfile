@@ -11,9 +11,3 @@ ENV SELKIES_FRAMERATE=60
 ENV CHROMIUM_FLAGS="--disable-dev-shm-usage --no-sandbox --use-gl=swiftshader --enable-features=WebCodecs,WebRTC-H264WithOpenH264AcquireEncoder"
 
 EXPOSE 8080
-
-# התקנת רכיבי שמע וירטואליים
-sudo apt-get update && sudo apt-get install -y pulseaudio alsa-utils
-
-# הפעלת שרת השמע הווירטואלי ברקע
-pulseaudio --start --exit-idle-time=-1
